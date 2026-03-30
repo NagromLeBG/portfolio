@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+header {
+    text-align: center;
+    padding: 50px  ;
+    background: #bebdbd;
+    color: #4e92d6;
+    border-radius: 25px;
+}
+
+.projet-card {
+    background: #fff;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Conteneur principal plus petit et aligné à gauche */
+.certif-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    max-width: 450px; /* Réduit la largeur pour que ce soit moins gros */
+    margin: 20px 0;    /* Aligne à gauche (marge 0 à droite) */
+    
+    /* L'encoche bleue à l'intérieur du carré blanc */
+    border-left: 6px solid #4285F4; 
+    border-top: 1px solid #eee;   /* Petite bordure légère pour fermer le carré */
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.certif-card h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.certif-card p {
+    margin: 0 0 15px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Liste des modules plus compacte */
+.certif-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.certif-card li {
+    margin-bottom: 6px;
+}
+
+.certif-card li a {
+    display: block;
+    padding: 8px 12px;
+    background-color: #f8f9fa;
+    color: #444;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85em; /* Texte plus petit */
+    border: 1px solid #f0f0f0;
+}
+
+.certif-card li a:hover {
+    background-color: #edf2ff;
+    border-color: #4285F4;
+}
+
+/* Bouton Coursera plus fin */
+.btn-coursera {
+    display: inline-block; /* Ne prend que la largeur nécessaire */
+    padding: 10px 20px;
+    background-color: #2a5bd7;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.85em;
+    transition: background 0.3s;
+}
+
+.btn-coursera:hover {
+    background-color: #1d3f99;
+}
+
+/* Style rapide pour les boutons de projets */
+.btn-projet {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
