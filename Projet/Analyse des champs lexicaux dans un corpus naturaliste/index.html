@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyse des champs lexicaux dans un corpus naturaliste</title>
+  <link rel="stylesheet" href="style_Goncourt.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="intro">
+        <p>Projet NLP · Python · spaCy · scikit-learn</p>
+        <h1>Analyse des champs lexicaux dans un corpus naturaliste</h1>
+        <p>
+          Projet de traitement automatique des langues appliqué à dix romans des frères Goncourt.
+          L’objectif était de faire émerger les principaux champs lexicaux du corpus, puis d’examiner
+          leur répartition dans les œuvres afin d’appuyer une lecture d’inspiration naturaliste.
+        </p>
+      </div>
+      <div class="meta">
+        <div class="meta-card"><strong>Corpus</strong><br />10 romans</div>
+        <div class="meta-card"><strong>Segmentation</strong><br />300 mots</div>
+        <div class="meta-card"><strong>Unités d’analyse</strong><br />2280 segments</div>
+        <div class="meta-card"><strong>Modèle retenu</strong><br />NMF à 10 topics</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section>
+        <h2>Objectif</h2>
+        <div class="card">
+          <p>
+            Ce travail visait à repérer les grands champs lexicaux qui structurent un corpus de dix romans
+            des frères Goncourt. Après plusieurs essais méthodologiques, j’ai retenu une approche fondée sur
+            la segmentation du corpus, le prétraitement linguistique avec spaCy, une vectorisation TF-IDF et
+            une modélisation thématique par NMF.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Corpus étudié</h2>
+        <div class="card">
+          <ul>
+            <li><em>Charles Demailly</em> (1860)</li>
+            <li><em>Sœur Philomène</em> (1861)</li>
+            <li><em>Renée Mauperin</em> (1864)</li>
+            <li><em>Germinie Lacerteux</em> (1865)</li>
+            <li><em>Manette Salomon</em> (1867)</li>
+            <li><em>Madame Gervaisais</em> (1869)</li>
+            <li><em>La Fille Élisa</em> (1877)</li>
+            <li><em>Les Frères Zemganno</em> (1879)</li>
+            <li><em>La Faustin</em> (1882)</li>
+            <li><em>Chérie</em> (1884)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Méthode</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Prétraitement</h3>
+            <p>
+              Segmentation en unités de 300 mots, lemmatisation avec <code>spaCy</code>, suppression des mots-outils,
+              de la ponctuation et des chiffres, puis conservation principale des noms et des adjectifs.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Modélisation</h3>
+            <p>
+              Vectorisation par matrice TF-IDF avec <code>min_df = 5</code> et <code>max_df = 0.8</code>, puis comparaison
+              entre NMF, LDA et BERTopic. Le modèle NMF à 10 topics a produit les résultats les plus cohérents.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Visualisations</h2>
+        <div class="grid">
+          <figure>
+            <img src="images/tokens_par_textes.png" alt="Distribution du nombre de tokens par œuvre" />
+            <figcaption>Distribution du nombre de tokens par œuvre du corpus.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/champs_lexicaux_par_textes.png" alt="Répartition des champs lexicaux par œuvre" />
+            <figcaption>Répartition des champs lexicaux dominants selon les œuvres du corpus.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section>
+        <h2>Champs lexicaux retenus</h2>
+        <table class="themes-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Champ lexical</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Intériorité, souffrance et pensée</td></tr>
+            <tr><td>2</td><td>Paysage et lumière</td></tr>
+            <tr><td>3</td><td>Maladie et espace hospitalier</td></tr>
+            <tr><td>4</td><td>Famille, enfance et pauvreté</td></tr>
+            <tr><td>5</td><td>Argent, affaires et quotidien matériel</td></tr>
+            <tr><td>6</td><td>Cirque et performance</td></tr>
+            <tr><td>7</td><td>Mariage et sociabilité</td></tr>
+            <tr><td>8</td><td>Corps et perception</td></tr>
+            <tr><td>9</td><td>Art pictural et atelier</td></tr>
+            <tr><td>10</td><td>Théâtre, presse et monde culturel</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Résultats</h2>
+        <div class="card">
+          <p>
+            Les champs les plus représentés dans le corpus sont <strong>corps et perception</strong>,
+            <strong>paysage et lumière</strong>, <strong>théâtre, presse et monde culturel</strong> et
+            <strong>mariage et sociabilité</strong>. La répartition par œuvre montre à la fois des régularités
+            transversales et des spécialisations plus marquées selon les romans.
+          </p>
+          <p>
+            L’ensemble obtenu est compatible avec une lecture naturaliste du corpus : le corps, les milieux,
+            les conditions matérielles, les espaces sociaux et la souffrance occupent une place importante dans
+            les résultats.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Limites</h2>
+        <div class="card">
+          <p>
+            Cette analyse reste exploratoire. Les topics extraits correspondent à des regroupements lexicaux
+            statistiquement récurrents, et non à des thèmes littéraires au sens strict. Leur interprétation
+            suppose donc un retour constant aux segments et aux œuvres elles-mêmes.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Liens</h2>
+        <div class="buttons">
+          <a class="button" href="https://github.com/NagromLeBG/NLP-Naturalist-Corpus" target="_blank" rel="noreferrer">Voir le dépôt GitHub</a>
+          <a class="button secondary" href="/Users/morganr/Desktop/portfolio/Projet/Analyse des champs lexicaux dans un corpus naturaliste/Champs_lexicaux_Goncourt.pdf" target="_blank" rel="noreferrer">Voir le rapport PDF</a>
+          <a class="button secondary" href="../../index.html">Retour au portfolio</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      Projet portfolio · Analyse lexicale d’un corpus naturaliste
+    </div>
+  </footer>
+</body>
+</html>
